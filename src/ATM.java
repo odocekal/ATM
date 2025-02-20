@@ -19,6 +19,12 @@ public class ATM {
     }
 
     // add money deposit function
+    public void depositMoney(int amountToDeposit){
+        if(amountToDeposit <= this.money){
+            totalMoney += amountToDeposit;
+            this.money += amountToDeposit;
+        }
+    }
 
     public static void averageMoney(){
         System.out.println(totalMoney / numATMs);
@@ -29,12 +35,16 @@ public class ATM {
         System.out.println("Total number of ATMs: " + ATM.numATMs);
         ATM firstATM = new ATM(1000);
         ATM secondATM = new ATM(500);
+        ATM thirdATM = new ATM(2500);
         System.out.println("Total number of ATMs: " + ATM.numATMs);
 
         System.out.println("Total amount of money in all ATMs: " + ATM.totalMoney);
         firstATM.withdrawMoney(500);
         secondATM.withdrawMoney(200);
         System.out.println("Total amount of money in all ATMs: " + ATM.totalMoney);
+        thirdATM.depositMoney(500);
+        System.out.println("Total amount of money in all ATMs: " + ATM.totalMoney);
+
 
         // Call averageMoney() here
         ATM.averageMoney();
